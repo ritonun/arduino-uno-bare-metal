@@ -1,2 +1,10 @@
+# Python environment
+venv/
+.venv/
+__pycache__/
+
+# Build file
 build/
+
+# Custom ressources
 dev_res/
