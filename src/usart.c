@@ -34,22 +34,12 @@ uint8_t USART_rx_byte() {
     return UDR0;
 }
 
-void USART_print_str(const char str[]) {
+void USART_rx_str(uint8_t str[]) {
     // envoi une chaine de caractere byte par btye
     uint8_t i = 0;
-    while(str[i]) {
+    while(str[i] != '0') {
         USART_tx_byte(str[i]);
         i++;
     }
-}
-
-void USART_print_binary(uint8_t byte) {
-    // print uint8_t en format binaire
-    uint8_t bit;
-    for (bit = 7; bit < 255; bit--) {
-        if (bit_is_set(byte, bit))
-            USART_tx_byte('1');
-        else
-            USART_tx_byte('0');
-  }
+    USART_tx_byte(str[i]);
 }
